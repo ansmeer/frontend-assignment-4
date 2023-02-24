@@ -20,12 +20,12 @@ export class TrainerService {
     return this.http.get<Trainer[]>(this.apiUrl);
   }
 
-  getTrainer(username: string): Observable<Trainer> {
+  getTrainer(username: string): Observable<Trainer[]> {
     const requestUri = new URL(
       '?' + new URLSearchParams({ username: username }),
       this.apiUrl
     ).toString();
-    return this.http.get<Trainer>(requestUri);
+    return this.http.get<Trainer[]>(requestUri);
   }
 
   createTrainer(username: string): Observable<Trainer> {
