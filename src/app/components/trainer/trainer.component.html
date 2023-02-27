@@ -1,2 +1,3 @@
 <p *ngIf="user">Hei {{ user.username }}, good to see you.</p>
 <p>You have caught the following Pokémon:</p>
+<app-pokemon-list [data]="user?.pokemon"></app-pokemon-list>
