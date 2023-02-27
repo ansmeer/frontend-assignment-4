@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon';
 import { AuthService } from 'src/app/services/auth.service';
 import Required from 'src/app/utils/required';
@@ -12,8 +12,10 @@ export class PokemonListItemComponent implements OnInit {
   @Input('data')
   @Required
   pokemon!: Pokemon;
-
+  @Output() pokemonRelease: EventEmitter<Pokemon> = new EventEmitter();
+  @Output() pokemonCatch: EventEmitter<Pokemon> = new EventEmitter();
   captured = false;
+  imageUrl?: string;
 
   constructor(private readonly authService: AuthService) {}
 
@@ -27,9 +29,21 @@ export class PokemonListItemComponent implements OnInit {
         this.captured = true;
       }
     }
+
+    if (this.data?.id === undefined) {
+      this.imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png`;
+    } else {
+      this.imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.data?.id}.png`;
+    }
   }
 
   get user() {
     return this.authService.user;
+  }
+  signalReleasePokemon(event: any, data?: Pokemon) {
+    this.pokemonRelease.emit(this.data);
+  }
+  signalCatchPokemon(event: any, data?: Pokemon) {
+    this.pokemonCatch.emit(this.data);
   }
 }
