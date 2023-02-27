@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class PokemonListItemComponent implements OnInit {
   @Input() data: Pokemon | undefined;
-  @Output() pokemonReleased: EventEmitter<Pokemon> = new EventEmitter();
+  @Output() pokemonRelease: EventEmitter<Pokemon> = new EventEmitter();
   @Output() pokemonCatch: EventEmitter<Pokemon> = new EventEmitter();
   captured = false;
 
@@ -31,7 +31,7 @@ export class PokemonListItemComponent implements OnInit {
     return this.authService.user;
   }
   signalReleasePokemon(event: any, data?: Pokemon) {
-    this.pokemonReleased.emit(this.data);
+    this.pokemonRelease.emit(this.data);
   }
   signalCatchPokemon(event: any, data?: Pokemon) {
     this.pokemonCatch.emit(this.data);
