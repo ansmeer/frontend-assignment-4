@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Trainer } from '../models/trainer';
+import { Pokemon } from '../models/pokemon';
 
 @Injectable({ providedIn: 'root' })
 export class TrainerService {
@@ -39,7 +40,7 @@ export class TrainerService {
     return this.http.post<Trainer>(requestUri, requestBody, requestOptions);
   }
 
-  updateTrainer(userId: number, pokemon: string[]): Observable<Trainer> {
+  updateTrainer(userId: number, pokemon: Pokemon[]): Observable<Trainer> {
     const requestUri = new URL(`${this._apiUrl}/${userId}`).toString();
     const requestBody = JSON.stringify({ pokemon: pokemon });
     const requestOptions = {
