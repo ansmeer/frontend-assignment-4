@@ -9,14 +9,14 @@ import { TrainerService } from 'src/app/services/trainer.service';
   styleUrls: ['./trainer.component.css'],
 })
 export class TrainerComponent implements OnInit {
-  public trainers?: Trainer[];
+  public trainers$?: Trainer[];
 
   constructor(private readonly trainerService: TrainerService) {}
 
   ngOnInit(): void {
     this.trainerService.getTrainers().subscribe({
       next: (trainers: Trainer[]) => {
-        this.trainers = trainers;
+        this.trainers$ = trainers;
       },
       error: () => {
         console.log('error'); // TODO improve error handling
