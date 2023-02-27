@@ -1,5 +1,5 @@
 <li class="captured">
-  {{ data?.name }}, {{ data?.url }}
+  {{ pokemon.name }}, {{ pokemon.url }}
   <img *ngIf="captured" src="./assets/pokeball.png" [alt]="captured" />
   <button *ngIf="captured">Release</button>
   <button *ngIf="!captured">Catch</button>
