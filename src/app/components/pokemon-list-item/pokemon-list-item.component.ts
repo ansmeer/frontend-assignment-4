@@ -1,6 +1,7 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon';
 import { AuthService } from 'src/app/services/auth.service';
+import Required from 'src/app/utils/required';
 
 @Component({
   selector: 'app-pokemon-list-item',
@@ -8,7 +9,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./pokemon-list-item.component.css'],
 })
 export class PokemonListItemComponent implements OnInit {
-  @Input() data: Pokemon | undefined;
+  @Input('data')
+  @Required
+  pokemon!: Pokemon;
   @Output() pokemonRelease: EventEmitter<Pokemon> = new EventEmitter();
   @Output() pokemonCatch: EventEmitter<Pokemon> = new EventEmitter();
   captured = false;
@@ -17,10 +20,10 @@ export class PokemonListItemComponent implements OnInit {
   constructor(private readonly authService: AuthService) {}
 
   ngOnInit(): void {
-    if (this.data && this.authService.user) {
+    if (this.pokemon && this.authService.user) {
       if (
         this.authService.user.pokemon.filter(
-          (value) => value.name === this.data!.name
+          (value) => value.name === this.pokemon!.name
         ).length > 0
       ) {
         this.captured = true;
