@@ -8,4 +8,5 @@ export type PokemonList = {
 export type Pokemon = {
   name: string;
   url: string;
+  id?: number;
 };
