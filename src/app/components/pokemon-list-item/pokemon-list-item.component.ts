@@ -12,6 +12,7 @@ export class PokemonListItemComponent implements OnInit {
   @Output() pokemonRelease: EventEmitter<Pokemon> = new EventEmitter();
   @Output() pokemonCatch: EventEmitter<Pokemon> = new EventEmitter();
   captured = false;
+  imageUrl?: string;
 
   constructor(private readonly authService: AuthService) {}
 
@@ -24,6 +25,12 @@ export class PokemonListItemComponent implements OnInit {
       ) {
         this.captured = true;
       }
+    }
+
+    if (this.data?.id === undefined) {
+      this.imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png`;
+    } else {
+      this.imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.data?.id}.png`;
     }
   }
 
