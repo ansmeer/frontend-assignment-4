@@ -26,7 +26,7 @@ export class TrainerService {
       '?' + new URLSearchParams({ username: username }),
       this._apiUrl
     ).toString();
-    return this.http.get<Trainer[]>(requestUri);
+    return this.http.get<Trainer[]>(requestUri); // pipe to change to single trainer instead of array?
   }
 
   createTrainer(username: string): Observable<Trainer> {
