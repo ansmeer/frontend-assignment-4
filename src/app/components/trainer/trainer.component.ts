@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Trainer } from 'src/app/models/trainer';
-import { TrainerService } from 'src/app/services/trainer.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-trainer',
@@ -9,18 +7,13 @@ import { TrainerService } from 'src/app/services/trainer.service';
   styleUrls: ['./trainer.component.css'],
 })
 export class TrainerComponent implements OnInit {
-  public trainers$?: Trainer[];
-
-  constructor(private readonly trainerService: TrainerService) {}
+  constructor(private readonly authService: AuthService) {}
 
   ngOnInit(): void {
-    this.trainerService.getTrainers().subscribe({
-      next: (trainers: Trainer[]) => {
-        this.trainers$ = trainers;
-      },
-      error: () => {
-        console.log('error'); // TODO improve error handling
-      },
-    });
+    this.authService.login('luisa');
+  }
+
+  get user() {
+    return this.authService.user;
   }
 }

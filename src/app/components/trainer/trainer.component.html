@@ -1,3 +1,2 @@
-<p>trainer works!</p>
-<ul *ngFor="let trainer of trainers$"><li>{{trainer.username}}</li></ul>
-<app-pokemon-list />
+<p *ngIf="user">Hei {{ user.username }}, good to see you.</p>
+<p>You have caught the following Pokémon:</p>
