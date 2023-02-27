@@ -1,11 +1,11 @@
 <li class="captured">
-  {{ data?.name }}, {{ data?.id }}
-  <img [src]="imageUrl" [alt]="data?.name" />
+  {{ pokemon.name }}, {{ pokemon.id }}
+  <img [src]="imageUrl" [alt]="pokemon.name" />
   <img *ngIf="captured" src="./assets/pokeball.png" [alt]="captured" />
-  <button *ngIf="captured" (click)="signalReleasePokemon($event, data)">
+  <button *ngIf="captured" (click)="signalReleasePokemon($event, pokemon)">
     Release
   </button>
-  <button *ngIf="!captured" (click)="signalCatchPokemon($event, data)">
+  <button *ngIf="!captured" (click)="signalCatchPokemon($event, pokemon)">
     Catch
   </button>
 </li>

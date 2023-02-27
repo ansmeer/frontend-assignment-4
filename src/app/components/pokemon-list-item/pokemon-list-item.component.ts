@@ -30,10 +30,10 @@ export class PokemonListItemComponent implements OnInit {
       }
     }
 
-    if (this.data?.id === undefined) {
+    if (this.pokemon.id === undefined) {
       this.imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png`;
     } else {
-      this.imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.data?.id}.png`;
+      this.imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.pokemon.id}.png`;
     }
   }
 
@@ -41,9 +41,9 @@ export class PokemonListItemComponent implements OnInit {
     return this.authService.user;
   }
   signalReleasePokemon(event: any, data?: Pokemon) {
-    this.pokemonRelease.emit(this.data);
+    this.pokemonRelease.emit(this.pokemon);
   }
   signalCatchPokemon(event: any, data?: Pokemon) {
-    this.pokemonCatch.emit(this.data);
+    this.pokemonCatch.emit(this.pokemon);
   }
 }
