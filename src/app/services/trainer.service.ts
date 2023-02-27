@@ -5,46 +5,46 @@ import { Trainer } from '../models/trainer';
 
 @Injectable({ providedIn: 'root' })
 export class TrainerService {
-  private readonly apiUrl: string =
+  private readonly _apiUrl: string =
     'https://pickle-abounding-oriole.glitch.me/trainers';
-  private readonly apiKey: string =
+  private readonly _apiKey: string =
     'XJj0Tk5lqqjcbhYCZfSAocbwVD4n3nM6J19BRjAZzBCmM7G245K2AzfJTjd2FmOR';
-  private readonly protectedHeaders = {
-    'X-API-Key': this.apiKey,
+  private readonly _protectedHeaders = {
+    'X-API-Key': this._apiKey,
     'Content-Type': 'application/json',
   };
 
   constructor(private readonly http: HttpClient) {}
 
   getTrainers(): Observable<Trainer[]> {
-    return this.http.get<Trainer[]>(this.apiUrl);
+    return this.http.get<Trainer[]>(this._apiUrl);
   }
 
   getTrainer(username: string): Observable<Trainer[]> {
     const requestUri = new URL(
       '?' + new URLSearchParams({ username: username }),
-      this.apiUrl
+      this._apiUrl
     ).toString();
     return this.http.get<Trainer[]>(requestUri);
   }
 
   createTrainer(username: string): Observable<Trainer> {
-    const requestUri = new URL(this.apiUrl).toString();
+    const requestUri = new URL(this._apiUrl).toString();
     const requestBody = JSON.stringify({ username: username, pokemon: [] });
     const requestOptions = {
       method: 'POST',
-      headers: this.protectedHeaders,
+      headers: this._protectedHeaders,
     };
 
     return this.http.post<Trainer>(requestUri, requestBody, requestOptions);
   }
 
   updateTrainer(userId: number, pokemon: string[]): Observable<Trainer> {
-    const requestUri = new URL(`${this.apiUrl}/${userId}`).toString();
+    const requestUri = new URL(`${this._apiUrl}/${userId}`).toString();
     const requestBody = JSON.stringify({ pokemon: pokemon });
     const requestOptions = {
       method: 'PATCH',
-      headers: this.protectedHeaders,
+      headers: this._protectedHeaders,
     };
     return this.http.patch<Trainer>(requestUri, requestBody, requestOptions);
   }
