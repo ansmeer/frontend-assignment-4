@@ -1,3 +1,8 @@
 <ul *ngIf="data">
-    <app-pokemon-list-item *ngFor="let pokemon of data" [data]="pokemon" />
+  <app-pokemon-list-item
+    *ngFor="let pokemon of data"
+    [data]="pokemon"
+    (pokemonCatch)="handleCatchPokemon($event)"
+    (pokemonReleased)="handleReleasePokemon($event)"
+  ></app-pokemon-list-item>
 </ul>
