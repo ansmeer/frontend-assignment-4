@@ -1,1 +1,5 @@
-<li>{{ data?.name }}, {{ data?.url }}</li>
+<li>
+  {{ data?.name }}, {{ data?.url }}
+  <button *ngIf="captured">Release</button>
+  <button *ngIf="!captured">Catch</button>
+</li>
