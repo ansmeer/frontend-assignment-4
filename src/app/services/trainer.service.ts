@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Trainer } from '../models/trainer';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class TrainerService {
   private readonly apiUrl: string =
     'https://pickle-abounding-oriole.glitch.me/trainers';
