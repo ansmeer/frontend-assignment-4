@@ -1,1 +1,6 @@
-<p>pokemon-list-item works!</p>
+<li class="captured">
+  {{ data?.name }}, {{ data?.url }}
+  <img *ngIf="captured" src="./assets/pokeball.png" [alt]="captured" />
+  <button *ngIf="captured">Release</button>
+  <button *ngIf="!captured">Catch</button>
+</li>

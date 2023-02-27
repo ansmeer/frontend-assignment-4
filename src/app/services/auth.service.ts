@@ -13,7 +13,6 @@ export class AuthService {
   login(username: string) {
     this.trainerService.getTrainer(username).subscribe({
       next: (trainers) => {
-        console.log('trainers', trainers);
         this._user = trainers[0];
       },
     });
