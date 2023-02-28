@@ -14,6 +14,8 @@ import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon
 import { HttpClientModule } from '@angular/common/http';
 import { TrainerService } from './services/trainer.service';
 import { PokemonService } from './services/pokemon.service';
+import { FormsModule } from '@angular/forms';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,9 @@ import { PokemonService } from './services/pokemon.service';
     TrainerComponent,
     PokemonListComponent,
     PokemonListItemComponent,
+    LoginFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [TrainerService, PokemonService],
   bootstrap: [AppComponent],
 })

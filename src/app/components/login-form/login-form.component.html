@@ -1,0 +1,17 @@
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <input
+    type="text"
+    ngModel
+    #username="ngModel"
+    name="username"
+    required
+    placeholder="username"
+    minlength="5"
+    maxlength="30"
+  />
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  <div *ngIf="username.errors && (username.dirty || username.touched)">
+    <p *ngIf="username.errors?.['required']">Username is required</p>
+    <p *ngIf="username.errors?.['minlength']">Username is too short</p>
+  </div>
+</form>

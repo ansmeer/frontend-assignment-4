@@ -1,4 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pokemon } from '../models/pokemon';
 import { Trainer } from '../models/trainer';
 import { TrainerService } from './trainer.service';
@@ -9,12 +10,20 @@ import { TrainerService } from './trainer.service';
 export class AuthService {
   private _user: Trainer | null = null;
 
-  constructor(private readonly trainerService: TrainerService) {}
+  constructor(
+    private readonly trainerService: TrainerService,
+    private readonly router: Router
+  ) {}
 
   login(username: string) {
     this.trainerService.getTrainer(username).subscribe({
       next: (trainers) => {
-        this._user = trainers[0];
+        if (trainers.length === 0) {
+          this.register(username);
+        } else {
+          this._user = trainers[0];
+          this.router.navigate(['catalogue']); // TODO can this be placed differently for separation of concerns?
+        }
       },
     });
   }
@@ -27,6 +36,7 @@ export class AuthService {
     this.trainerService.createTrainer(username).subscribe({
       next: (trainer) => {
         this._user = trainer;
+        this.router.navigate(['catalogue']); // TODO can this be placed differently for separation of concerns?
       },
     });
   }
