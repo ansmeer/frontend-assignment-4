@@ -16,6 +16,8 @@ import { TrainerService } from './services/trainer.service';
 import { PokemonService } from './services/pokemon.service';
 import { FormsModule } from '@angular/forms';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     LoginFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [TrainerService, PokemonService],
+  providers: [AuthService, TrainerService, PokemonService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
