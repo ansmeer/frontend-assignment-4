@@ -9,6 +9,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class TrainerComponent {
   constructor(private readonly authService: AuthService) {}
 
+  handleLogoutClick() {
+    this.authService.logout();
+  }
+
   get user() {
     return this.authService.user;
   }
