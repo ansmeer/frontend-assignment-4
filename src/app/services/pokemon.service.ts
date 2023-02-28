@@ -7,8 +7,7 @@ import { TrainerService } from './trainer.service';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
-  private readonly apiUrl: string =
-    'https://pokeapi.co/api/v2/pokemon/?limit=20';
+  private readonly apiUrl: string = 'https://pokeapi.co/api/v2/pokemon';
 
   constructor(
     private readonly http: HttpClient,
@@ -16,8 +15,9 @@ export class PokemonService {
     private readonly trainerService: TrainerService
   ) {}
 
-  getPokemon(): Observable<PokemonList> {
-    return this.http.get<PokemonList>(this.apiUrl).pipe(
+  getPokemon(limit = 50, offset = 0): Observable<PokemonList> {
+    const requestUrl = `${this.apiUrl}?limit=${limit}&offset=${offset}`;
+    return this.http.get<PokemonList>(requestUrl).pipe(
       map((data) => {
         const pokemonList: Pokemon[] = [];
         data.results.forEach((pokemon) => {
