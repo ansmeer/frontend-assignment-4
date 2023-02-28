@@ -8,11 +8,22 @@ import { LoginFormData } from '../login-form/login-form.component';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router
   ) {}
+
+  ngOnInit(): void {
+    if (this.authService.user) {
+      this.router.navigate(['catalogue']);
+    }
+
+    const localUsername = localStorage.getItem('username');
+    if (localUsername) {
+      this.authService.login(localUsername);
+    }
+  }
 
   handleLoginFormSubmit(formData: LoginFormData) {
     this.authService.login(formData.username);
