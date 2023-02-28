@@ -31,26 +31,8 @@ export class AuthService {
     });
   }
 
-  releasePokemon(pokemon: Pokemon) {
-    // TODO Make the page refresh on button click.
-    if (this._user != null) {
-      this._user.pokemon = this._user.pokemon.filter(
-        (pkmn) => pkmn.name !== pokemon.name
-      );
-      this.trainerService
-        .updateTrainer(this._user.id, this._user.pokemon)
-        .subscribe();
-    }
-  }
-
-  catchPokemon(pokemon: Pokemon) {
-    // TODO Make the page refresh on button click.
-    if (this._user != null) {
-      this._user.pokemon.push(pokemon);
-      this.trainerService
-        .updateTrainer(this._user.id, this._user.pokemon)
-        .subscribe();
-    }
+  updateUser(user: Trainer): void {
+    this._user = user;
   }
 
   get user() {
