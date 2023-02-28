@@ -7,7 +7,11 @@
     class="pokeball"
   />
 </div>
-<div>{{ pokemon.name }} (#{{ pokemon.id }})</div>
+<div>
+  {{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }} (#{{
+    pokemon.id
+  }})
+</div>
 <div>
   <button *ngIf="captured" (click)="signalReleasePokemon()" class="release">
     Release
