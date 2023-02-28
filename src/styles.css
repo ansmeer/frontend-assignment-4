@@ -17,10 +17,9 @@ a {
   border-bottom: 1px solid #222;
 }
 
-a.active {
-  color: #1e5b7f;
+a.router-link-active {
+  font-weight: bold;
   border-bottom-width: 2px;
-  border-bottom-color: #1e5b7f;
 }
 
 a:hover {

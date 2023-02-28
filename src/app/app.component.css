@@ -62,7 +62,3 @@ ul.menu {
   gap: 10px;
   list-style: none;
 }
-
-.active {
-  font-weight: bold;
-}
