@@ -9,6 +9,7 @@ After logging in users can catch and release Pokemon. User management relies on 
 - [Background](#background)
 - [Install](#install)
 - [Usage](#usage)
+- [Component tree](#component-tree)
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 - [License](#license)
@@ -36,6 +37,10 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Component tree
+
+![component tree](/component-tree.png)
 
 ## Maintainers
 
