@@ -6,12 +6,8 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './trainer.component.html',
   styleUrls: ['./trainer.component.css'],
 })
-export class TrainerComponent implements OnInit {
+export class TrainerComponent {
   constructor(private readonly authService: AuthService) {}
-
-  ngOnInit(): void {
-    this.authService.login('luisa');
-  }
 
   get user() {
     return this.authService.user;
