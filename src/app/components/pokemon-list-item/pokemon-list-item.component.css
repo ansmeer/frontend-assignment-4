@@ -1,5 +1,5 @@
 .avatar {
-  width: 100px;
+  height: 100px;
 }
 
 .pokeball {
@@ -8,6 +8,16 @@
 
 div {
   text-align: center;
+  padding: 10px;
+}
+
+div:nth-last-of-type(2) {
+  background-color: #d0d0d0;
+}
+
+div:last-of-type {
+  background-color: #d0d0d0;
+  border-radius: 0 0 10px 10px;
 }
 
 .release {
