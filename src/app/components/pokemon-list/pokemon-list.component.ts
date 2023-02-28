@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon';
-import { AuthService } from 'src/app/services/auth.service';
-import { TrainerService } from 'src/app/services/trainer.service';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -9,17 +8,15 @@ import { TrainerService } from 'src/app/services/trainer.service';
   styleUrls: ['./pokemon-list.component.css'],
 })
 export class PokemonListComponent {
-  @Input() data: Pokemon[] | undefined;
+  @Input() data?: Pokemon[];
 
-  constructor(
-    private readonly authService: AuthService,
-    private readonly trainerService: TrainerService
-  ) {}
+  constructor(private readonly pokemonService: PokemonService) {}
 
   handleReleasePokemon(pokemon: Pokemon) {
-    this.authService.releasePokemon(pokemon);
+    this.pokemonService.release(pokemon);
   }
+
   handleCatchPokemon(pokemon: Pokemon) {
-    this.authService.catchPokemon(pokemon);
+    this.pokemonService.catch(pokemon);
   }
 }

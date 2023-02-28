@@ -2,16 +2,22 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Pokemon, PokemonList } from '../models/pokemon';
+import { AuthService } from './auth.service';
+import { TrainerService } from './trainer.service';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
-  private readonly apiUrl: string =
-    'https://pokeapi.co/api/v2/pokemon/?limit=20';
+  private readonly apiUrl: string = 'https://pokeapi.co/api/v2/pokemon';
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(
+    private readonly http: HttpClient,
+    private readonly authService: AuthService,
+    private readonly trainerService: TrainerService
+  ) {}
 
-  getPokemon(): Observable<PokemonList> {
-    return this.http.get<PokemonList>(this.apiUrl).pipe(
+  getPokemon(limit = 50, offset = 0): Observable<PokemonList> {
+    const requestUrl = `${this.apiUrl}?limit=${limit}&offset=${offset}`;
+    return this.http.get<PokemonList>(requestUrl).pipe(
       map((data) => {
         const pokemonList: Pokemon[] = [];
         data.results.forEach((pokemon) => {
@@ -22,5 +28,35 @@ export class PokemonService {
         return { ...data, results: pokemonList };
       })
     );
+  }
+
+  catch(pokemon: Pokemon): void {
+    const user = this.authService.user;
+    if (user === null) {
+      return;
+    }
+
+    const newPokemons = [...user.pokemon, pokemon];
+    this.trainerService.updateTrainer(user.id, newPokemons).subscribe({
+      next: (newUser) => {
+        this.authService.updateUser(newUser);
+      },
+    });
+  }
+
+  release(pokemon: Pokemon): void {
+    const user = this.authService.user;
+    if (user === null) {
+      return;
+    }
+
+    const newPokemons = [...user.pokemon].filter(
+      (pkmn) => pkmn.name !== pokemon.name
+    );
+    this.trainerService.updateTrainer(user.id, newPokemons).subscribe({
+      next: (newUser) => {
+        this.authService.updateUser(newUser);
+      },
+    });
   }
 }
