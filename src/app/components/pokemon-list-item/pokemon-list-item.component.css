@@ -1,3 +1,27 @@
-.captured img {
-  width: 50px;
+.avatar {
+  width: 100px;
+}
+
+.pokeball {
+  width: 20px;
+}
+
+div {
+  text-align: center;
+}
+
+.release {
+  background-color: #2b8452;
+}
+
+.release:hover {
+  background-color: #22643e;
+}
+
+.catch {
+  background-color: #db392d;
+}
+
+.catch:hover {
+  background-color: #a31f16;
 }

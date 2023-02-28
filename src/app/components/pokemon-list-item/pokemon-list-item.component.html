@@ -1,7 +1,18 @@
-<li class="captured">
-  {{ pokemon.name }}, {{ pokemon.id }}
-  <img [src]="imageUrl" [alt]="pokemon.name" />
-  <img *ngIf="captured" src="./assets/pokeball.png" [alt]="captured" />
-  <button *ngIf="captured" (click)="signalReleasePokemon()">Release</button>
-  <button *ngIf="!captured" (click)="signalCatchPokemon()">Catch</button>
-</li>
+<div>
+  <img [src]="imageUrl" [alt]="pokemon.name" class="avatar" />
+  <img
+    *ngIf="captured"
+    src="./assets/pokeball.png"
+    [alt]="captured"
+    class="pokeball"
+  />
+</div>
+<div>{{ pokemon.name }} (#{{ pokemon.id }})</div>
+<div>
+  <button *ngIf="captured" (click)="signalReleasePokemon()" class="release">
+    Release
+  </button>
+  <button *ngIf="!captured" (click)="signalCatchPokemon()" class="catch">
+    Catch
+  </button>
+</div>
