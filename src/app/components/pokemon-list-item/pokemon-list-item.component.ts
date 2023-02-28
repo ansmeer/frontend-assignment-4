@@ -40,10 +40,10 @@ export class PokemonListItemComponent implements OnInit {
   get user() {
     return this.authService.user;
   }
-  signalReleasePokemon(event: any, data?: Pokemon) {
+    this.captured = false;
     this.pokemonRelease.emit(this.pokemon);
   }
-  signalCatchPokemon(event: any, data?: Pokemon) {
+    this.captured = true;
     this.pokemonCatch.emit(this.pokemon);
   }
 }
