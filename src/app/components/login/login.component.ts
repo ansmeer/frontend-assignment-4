@@ -18,6 +18,11 @@ export class LoginComponent implements OnInit {
     if (this.authService.user) {
       this.router.navigate(['catalogue']);
     }
+
+    const localUsername = localStorage.getItem('username');
+    if (localUsername) {
+      this.authService.login(localUsername);
+    }
   }
 
   handleLoginFormSubmit(formData: LoginFormData) {

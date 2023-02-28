@@ -22,6 +22,7 @@ export class AuthService {
           this.register(username);
         } else {
           this._user = trainers[0];
+          localStorage.setItem('username', username);
           this.router.navigate(['catalogue']); // TODO can this be placed differently for separation of concerns?
         }
       },
@@ -30,12 +31,14 @@ export class AuthService {
 
   logout() {
     this._user = null;
+    localStorage.removeItem('username');
   }
 
   register(username: string) {
     this.trainerService.createTrainer(username).subscribe({
       next: (trainer) => {
         this._user = trainer;
+        localStorage.setItem('username', username);
         this.router.navigate(['catalogue']); // TODO can this be placed differently for separation of concerns?
       },
     });
