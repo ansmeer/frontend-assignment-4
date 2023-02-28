@@ -32,6 +32,7 @@ export class AuthService {
   logout() {
     this._user = null;
     localStorage.removeItem('username');
+    this.router.navigate(['login']);
   }
 
   register(username: string) {
