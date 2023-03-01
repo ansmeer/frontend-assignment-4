@@ -2,7 +2,7 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-After logging in users can catch and release Pokemon. User management relies on an instance of [noroff-assignment-api](https://github.com/dewald-els/noroff-assignment-api) by [dewald-els](https://github.com/dewald-els) deployed on [glitch.com](https://glitch.com)
+After logging in, users can catch and release Pokémon. User management relies on an instance of [noroff-assignment-api](https://github.com/dewald-els/noroff-assignment-api) by [dewald-els](https://github.com/dewald-els) deployed on [glitch.com](https://glitch.com). Access to the Pokémon catalogue is provided by [PokéAPI](https://pokeapi.co/).
 
 ## Table of Contents
 
