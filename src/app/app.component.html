@@ -3,26 +3,26 @@
     <img src="/assets/pokeball.png" alt="logo" class="logo" />
     <h1>Pokémoon Trainer</h1>
   </div>
+  <nav>
+    <ul class="menu">
+      <li>
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active"
+          >Login</a
+        >
+      </li>
+      <li>
+        <a [routerLink]="['/catalogue']" routerLinkActive="router-link-active"
+          >Catalogue</a
+        >
+      </li>
+      <li>
+        <a [routerLink]="['/trainer']" routerLinkActive="router-link-active"
+          >Trainer</a
+        >
+      </li>
+    </ul>
+  </nav>
 </header>
-<nav>
-  <ul class="menu">
-    <li>
-      <a [routerLink]="['/login']" routerLinkActive="router-link-active"
-        >Login</a
-      >
-    </li>
-    <li>
-      <a [routerLink]="['/catalogue']" routerLinkActive="router-link-active"
-        >Catalogue</a
-      >
-    </li>
-    <li>
-      <a [routerLink]="['/trainer']" routerLinkActive="router-link-active"
-        >Trainer</a
-      >
-    </li>
-  </ul>
-</nav>
 <main>
   <router-outlet></router-outlet>
 </main>

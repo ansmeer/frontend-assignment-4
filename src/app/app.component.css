@@ -6,8 +6,10 @@ app-root {
 
 header {
   background: #ffc75f;
-  padding: 20px 0;
+  padding: 20px 0 0 0;
   color: white;
+  position: sticky;
+  top: 0;
 }
 
 .header {
@@ -41,6 +43,7 @@ main {
 
 nav {
   background: #222;
+  margin-top: 20px;
 }
 
 nav a {
