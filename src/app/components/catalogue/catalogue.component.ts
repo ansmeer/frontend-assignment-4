@@ -22,7 +22,7 @@ export class CatalogueComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
       if (params['page']) {
-        this._page = params['page'];
+        this.page = params['page'];
       }
     });
     this.updatePokemonList();
@@ -48,7 +48,7 @@ export class CatalogueComponent implements OnInit {
   }
 
   handlePreviousPageClick() {
-    this._page--;
+    this.page--;
     this.setPageAsQueryParam();
     this.updatePokemonList();
   }
