@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Pokemon } from '../models/pokemon';
 import { Trainer } from '../models/trainer';
+import { Redirect } from '../utils/parseRedirect';
 import { TrainerService } from './trainer.service';
 
 @Injectable({
@@ -15,15 +15,16 @@ export class AuthService {
     private readonly router: Router
   ) {}
 
-  login(username: string) {
+  login(username: string, redirect: Redirect) {
+    const { route, queryParams } = redirect;
     this.trainerService.getTrainer(username).subscribe({
       next: (trainers) => {
         if (trainers.length === 0) {
-          this.register(username);
+          this.register(username, redirect);
         } else {
           this._user = trainers[0];
           localStorage.setItem('username', username);
-          this.router.navigate(['catalogue']); // TODO can this be placed differently for separation of concerns?
+          this.router.navigate([route], queryParams); // TODO can this be placed differently for separation of concerns?
         }
       },
     });
@@ -35,12 +36,13 @@ export class AuthService {
     this.router.navigate(['login']);
   }
 
-  register(username: string) {
+  register(username: string, redirect: Redirect) {
+    const { route, queryParams } = redirect;
     this.trainerService.createTrainer(username).subscribe({
       next: (trainer) => {
         this._user = trainer;
         localStorage.setItem('username', username);
-        this.router.navigate(['catalogue']); // TODO can this be placed differently for separation of concerns?
+        this.router.navigate([route], queryParams); // TODO can this be placed differently for separation of concerns?
       },
     });
   }
