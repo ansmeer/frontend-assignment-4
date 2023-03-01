@@ -15,6 +15,7 @@ a {
   color: #222;
   text-decoration: inherit;
   border-bottom: 1px solid #222;
+  transition: color 0.5s, border-color 0.5s;
 }
 
 a.router-link-active {
