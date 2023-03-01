@@ -1,4 +1,7 @@
-<p>catalogue works!</p>
 <app-pokemon-list [data]="pokemonList?.results"></app-pokemon-list>
-<button (click)="handlePreviousPageClick()">Previous page</button>
-<button (click)="handleNextPageClick()">Next page</button>
+<div class="pagination">
+  <button *ngIf="page > 1" (click)="handlePreviousPageClick()">
+    Previous page
+  </button>
+  <button (click)="handleNextPageClick()">Next page</button>
+</div>
