@@ -11,7 +11,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class CatalogueComponent implements OnInit {
   public pokemonList?: PokemonList;
   public page = 1;
-  private _perPage = 12;
+  private _perPage = 24;
 
   constructor(
     private readonly pokemonService: PokemonService,
