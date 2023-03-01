@@ -43,17 +43,17 @@ export class CatalogueComponent implements OnInit {
 
   handleNextPageClick() {
     this.page++;
-    this.setPageAsQueryParam();
+    this.setPageAsUrlParam();
     this.updatePokemonList();
   }
 
   handlePreviousPageClick() {
     this.page--;
-    this.setPageAsQueryParam();
+    this.setPageAsUrlParam();
     this.updatePokemonList();
   }
 
-  setPageAsQueryParam() {
+  setPageAsUrlParam() {
     const queryParams: Params = { page: this.page };
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
