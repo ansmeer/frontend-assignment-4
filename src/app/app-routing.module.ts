@@ -7,9 +7,19 @@ import { TrainerPage } from './pages/trainer/trainer.page';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginPage },
-  { path: 'catalogue', component: CataloguePage, canActivate: [AuthGuard] },
-  { path: 'trainer', component: TrainerPage, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginPage, title: 'Login - Pokémoon Trainer' },
+  {
+    path: 'catalogue',
+    component: CataloguePage,
+    title: 'Catalogue - Pokémoon Trainer',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'trainer',
+    component: TrainerPage,
+    title: 'Trainer - Pokémoon Trainer',
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

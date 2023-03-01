@@ -9,8 +9,8 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class CatalogueComponent implements OnInit {
   public pokemonList?: PokemonList;
-  private _page = 1;
-  private _perPage = 25;
+  public page = 1;
+  private _perPage = 12;
 
   constructor(private readonly pokemonService: PokemonService) {}
 
@@ -19,7 +19,7 @@ export class CatalogueComponent implements OnInit {
   }
 
   updatePokemonList() {
-    const offset = (this._page - 1) * this._perPage;
+    const offset = (this.page - 1) * this._perPage;
 
     this.pokemonService.getPokemon(this._perPage, offset).subscribe({
       next: (pokemons: PokemonList) => {
@@ -32,12 +32,12 @@ export class CatalogueComponent implements OnInit {
   }
 
   handleNextPageClick() {
-    this._page++;
+    this.page++;
     this.updatePokemonList();
   }
 
   handlePreviousPageClick() {
-    this._page--;
+    this.page--;
     this.updatePokemonList();
   }
 }

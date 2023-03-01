@@ -1,0 +1,67 @@
+app-root {
+  margin: 0 auto;
+  padding: 0;
+  color: #222;
+}
+
+header {
+  background: #ffc75f;
+  padding: 20px 0 0 0;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.header {
+  max-width: 800px;
+  padding: 0 20px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+h1 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 3em;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  height: 80px;
+  filter: drop-shadow(0 0 15px #fff);
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  padding: 0 20px;
+}
+
+nav {
+  background: #222;
+  margin-top: 20px;
+}
+
+nav a {
+  color: #fff;
+  border-color: #fff;
+}
+
+nav a:hover {
+  color: #f44033;
+  border-bottom-color: #f44033;
+}
+
+ul.menu {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 800px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  list-style: none;
+}

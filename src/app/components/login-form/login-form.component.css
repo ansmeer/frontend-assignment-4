@@ -1,0 +1,45 @@
+/* Input style button inside */
+
+@media (max-width: 475px) {
+  div.button-within {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .button-within input {
+    padding: 7px;
+  }
+
+  .button-within button {
+    width: 100%;
+  }
+}
+
+div.button-within {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  background: #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+  gap: 10px;
+}
+
+.button-within input {
+  flex-grow: 2;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+  padding: 10px 20px;
+}
+
+.button-within button {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+form .errors {
+  padding: 10px 20px;
+  color: #f44033;
+}

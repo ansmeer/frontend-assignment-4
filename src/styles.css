@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  box-sizing: border-box;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #222;
+  text-decoration: inherit;
+  border-bottom: 1px solid #222;
+  transition: color 0.5s, border-color 0.5s;
+}
+
+a.router-link-active {
+  font-weight: bold;
+  border-bottom-width: 2px;
+}
+
+a:hover {
+  color: #f44033;
+  border-bottom-color: #f44033;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #222;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+button:hover {
+  background-color: #666;
+}
+
+button:disabled {
+  background-color: grey;
+}
+
+:focus-visible {
+  outline: 2px solid #f44033;
+}
+
+input {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.3em;
+}

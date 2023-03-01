@@ -1,4 +1,4 @@
 <p *ngIf="user">Hei {{ user.username }}, good to see you.</p>
 <button (click)="handleLogoutClick()">Logout</button>
-<p>You have caught the following Pokémon:</p>
+<p>You have caught {{ user?.pokemon?.length }} Pokémon.</p>
 <app-pokemon-list [data]="user?.pokemon"></app-pokemon-list>
