@@ -42,8 +42,8 @@ export class CatalogueComponent implements OnInit {
   }
 
   handleNextPageClick() {
-    this.setPageAsQueryParam();
     this.page++;
+    this.setPageAsQueryParam();
     this.updatePokemonList();
   }
 
