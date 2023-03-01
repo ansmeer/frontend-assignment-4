@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PokemonList } from 'src/app/models/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -12,9 +13,18 @@ export class CatalogueComponent implements OnInit {
   private _page = 1;
   private _perPage = 25;
 
-  constructor(private readonly pokemonService: PokemonService) {}
+  constructor(
+    private readonly pokemonService: PokemonService,
+    private readonly router: Router,
+    private readonly activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      if (params['page']) {
+        this._page = params['page'];
+      }
+    });
     this.updatePokemonList();
   }
 
@@ -33,11 +43,21 @@ export class CatalogueComponent implements OnInit {
 
   handleNextPageClick() {
     this._page++;
+    this.setPageAsQueryParam();
     this.updatePokemonList();
   }
 
   handlePreviousPageClick() {
     this._page--;
+    this.setPageAsQueryParam();
     this.updatePokemonList();
+  }
+
+  setPageAsQueryParam() {
+    const queryParams: Params = { page: this._page };
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: queryParams,
+    });
   }
 }
