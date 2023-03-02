@@ -3,15 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Trainer } from '../models/trainer';
 import { Pokemon } from '../models/pokemon';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
 export class TrainerService {
-  private readonly _apiUrl: string =
-    'https://pickle-abounding-oriole.glitch.me/trainers';
-  private readonly _apiKey: string =
-    'XJj0Tk5lqqjcbhYCZfSAocbwVD4n3nM6J19BRjAZzBCmM7G245K2AzfJTjd2FmOR';
+  private readonly _apiUrl: string = environment.TRAINER_API_BASE_URL;
   private readonly _protectedHeaders = {
-    'X-API-Key': this._apiKey,
+    'X-API-Key': environment.TRAINER_API_KEY,
     'Content-Type': 'application/json',
   };
 
