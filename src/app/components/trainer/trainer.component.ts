@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class TrainerComponent {
   constructor(private readonly authService: AuthService) {}
 
-  handleLogoutClick() {
+  handleLogoutClick(): void {
     this.authService.logout();
   }
 

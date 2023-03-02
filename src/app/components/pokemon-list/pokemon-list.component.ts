@@ -8,15 +8,15 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./pokemon-list.component.css'],
 })
 export class PokemonListComponent {
-  @Input() data?: Pokemon[];
+  @Input() public data?: Pokemon[];
 
   constructor(private readonly pokemonService: PokemonService) {}
 
-  handleReleasePokemon(pokemon: Pokemon) {
+  handleReleasePokemon(pokemon: Pokemon): void {
     this.pokemonService.release(pokemon);
   }
 
-  handleCatchPokemon(pokemon: Pokemon) {
+  handleCatchPokemon(pokemon: Pokemon): void {
     this.pokemonService.catch(pokemon);
   }
 }

@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  handleLoginFormSubmit(formData: LoginFormData) {
+  handleLoginFormSubmit(formData: LoginFormData): void {
     const redirect = this.getRedirectTo();
     this.authService.login(formData.username, redirect);
   }
