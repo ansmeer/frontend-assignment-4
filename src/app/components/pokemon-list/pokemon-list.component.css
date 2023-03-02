@@ -12,6 +12,13 @@ li {
   border-radius: 10px;
 }
 
+.pokemon-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+}
+
 @media (max-width: 750px) {
   ul {
     grid-template-columns: repeat(3, 1fr);
