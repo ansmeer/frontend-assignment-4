@@ -9,7 +9,8 @@ export type LoginFormData = { username: string };
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
-  @Output() submitLoginForm: EventEmitter<LoginFormData> = new EventEmitter();
+  @Output() public submitLoginForm: EventEmitter<LoginFormData> =
+    new EventEmitter();
 
   onSubmit(form: NgForm): void {
     if (form.status !== 'VALID') {

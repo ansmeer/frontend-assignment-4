@@ -8,7 +8,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./pokemon-list.component.css'],
 })
 export class PokemonListComponent {
-  @Input() data?: Pokemon[];
+  @Input() public data?: Pokemon[];
 
   constructor(private readonly pokemonService: PokemonService) {}
 

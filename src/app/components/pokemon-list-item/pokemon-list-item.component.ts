@@ -11,11 +11,11 @@ import Required from 'src/app/utils/required';
 export class PokemonListItemComponent implements OnInit {
   @Input('data')
   @Required
-  pokemon!: Pokemon;
-  @Output() pokemonRelease: EventEmitter<Pokemon> = new EventEmitter();
-  @Output() pokemonCatch: EventEmitter<Pokemon> = new EventEmitter();
-  captured = false;
-  imageUrl?: string;
+  public pokemon!: Pokemon;
+  @Output() public pokemonRelease: EventEmitter<Pokemon> = new EventEmitter();
+  @Output() public pokemonCatch: EventEmitter<Pokemon> = new EventEmitter();
+  public captured = false;
+  public imageUrl?: string;
 
   constructor(private readonly authService: AuthService) {}
 
