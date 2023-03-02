@@ -11,7 +11,7 @@ export type LoginFormData = { username: string };
 export class LoginFormComponent {
   @Output() submitLoginForm: EventEmitter<LoginFormData> = new EventEmitter();
 
-  onSubmit(form: NgForm) {
+  onSubmit(form: NgForm): void {
     if (form.status !== 'VALID') {
       return;
     }
@@ -19,7 +19,7 @@ export class LoginFormComponent {
     this.signalFormSubmit(form.value);
   }
 
-  signalFormSubmit(formData: LoginFormData) {
+  signalFormSubmit(formData: LoginFormData): void {
     this.submitLoginForm.emit(formData);
   }
 }

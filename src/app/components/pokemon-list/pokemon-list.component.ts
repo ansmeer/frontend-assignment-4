@@ -12,11 +12,11 @@ export class PokemonListComponent {
 
   constructor(private readonly pokemonService: PokemonService) {}
 
-  handleReleasePokemon(pokemon: Pokemon) {
+  handleReleasePokemon(pokemon: Pokemon): void {
     this.pokemonService.release(pokemon);
   }
 
-  handleCatchPokemon(pokemon: Pokemon) {
+  handleCatchPokemon(pokemon: Pokemon): void {
     this.pokemonService.catch(pokemon);
   }
 }

@@ -28,7 +28,7 @@ export class CatalogueComponent implements OnInit {
     this.updatePokemonList();
   }
 
-  updatePokemonList() {
+  updatePokemonList(): void {
     const offset = (this.page - 1) * this._perPage;
 
     this.pokemonService.getPokemon(this._perPage, offset).subscribe({
@@ -41,19 +41,19 @@ export class CatalogueComponent implements OnInit {
     });
   }
 
-  handleNextPageClick() {
+  handleNextPageClick(): void {
     this.page++;
     this.setPageAsUrlParam();
     this.updatePokemonList();
   }
 
-  handlePreviousPageClick() {
+  handlePreviousPageClick(): void {
     this.page--;
     this.setPageAsUrlParam();
     this.updatePokemonList();
   }
 
-  setPageAsUrlParam() {
+  setPageAsUrlParam(): void {
     const queryParams: Params = { page: this.page };
     this.router.navigate([], {
       relativeTo: this.activatedRoute,

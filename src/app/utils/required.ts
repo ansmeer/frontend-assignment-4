@@ -1,4 +1,4 @@
-function Required(target: object, propertyKey: string) {
+function Required(target: object, propertyKey: string): void {
   Object.defineProperty(target, propertyKey, {
     get() {
       throw new Error(`Attribute ${propertyKey} is required`);
