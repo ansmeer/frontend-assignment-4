@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +16,8 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly pokemonService: PokemonService
+    private readonly pokemonService: PokemonService,
+    private readonly location: Location
   ) {}
 
   ngOnInit(): void {
@@ -31,5 +33,9 @@ export class DetailsComponent implements OnInit {
         console.log('Could not fetch pokemon.', error.message);
       },
     });
+  }
+
+  handleBackClick() {
+    this.location.back();
   }
 }
