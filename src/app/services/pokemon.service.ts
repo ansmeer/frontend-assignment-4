@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Pokemon, PokemonList } from '../models/pokemon';
 import { AuthService } from './auth.service';
@@ -42,6 +42,9 @@ export class PokemonService {
       next: (newUser) => {
         this.authService.updateUser(newUser);
       },
+      error: (error: HttpErrorResponse) => {
+        console.log('Could not update user.', error.message);
+      },
     });
   }
 
@@ -57,6 +60,9 @@ export class PokemonService {
     this.trainerService.updateTrainer(user.id, newPokemons).subscribe({
       next: (newUser) => {
         this.authService.updateUser(newUser);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log('Could not update user.', error.message);
       },
     });
   }

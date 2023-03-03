@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Trainer } from '../models/trainer';
@@ -27,6 +28,9 @@ export class AuthService {
           this.router.navigate([route], queryParams);
         }
       },
+      error: (error: HttpErrorResponse) => {
+        console.log('Could not login user.', error.message);
+      },
     });
   }
 
@@ -43,6 +47,9 @@ export class AuthService {
         this._user = trainer;
         localStorage.setItem('username', username);
         this.router.navigate([route], queryParams);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log('Could not register user.', error.message);
       },
     });
   }

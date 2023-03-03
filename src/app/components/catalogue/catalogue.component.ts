@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PokemonList } from 'src/app/models/pokemon';
@@ -35,8 +36,8 @@ export class CatalogueComponent implements OnInit {
       next: (pokemons: PokemonList) => {
         this.pokemonList = pokemons;
       },
-      error: (error) => {
-        console.log('Yooo!', error.message); // TODO improve error handling.
+      error: (error: HttpErrorResponse) => {
+        console.log('Could not fetch pokemon list.', error.message);
       },
     });
   }
