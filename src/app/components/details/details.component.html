@@ -18,14 +18,14 @@
   <div ngClass="pkmn-image">
     <img
       [src]="pokemon.sprites.other['official-artwork'].front_default"
-      [alt]=""
+      [alt]="pokemon.name"
       class="avatar"
     />
   </div>
   <div ngClass="pkmn-info">
     <p>Height: {{ pokemon.height / 10 }} m</p>
     <p>Weight: {{ pokemon.weight / 10 }} kg</p>
-    <h4>Abiltities:</h4>
+    <h4>Abilities:</h4>
     <ul>
       <li *ngFor="let abil of pokemon.abilities">
         {{
