@@ -69,7 +69,7 @@ export class PokemonService {
   }
 
   getDetailedPokemon(pokemonId: string): Observable<PokemonDetails> {
-    const requestUrl: string = 'https://pokeapi.co/api/v2/pokemon/' + pokemonId;
+    const requestUrl = `${this._apiUrl}/${pokemonId}`;
     return this.http.get<PokemonDetails>(requestUrl);
   }
 }
