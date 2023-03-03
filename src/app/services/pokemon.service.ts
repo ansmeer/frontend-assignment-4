@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Pokemon, PokemonList } from '../models/pokemon';
 import { AuthService } from './auth.service';
 import { TrainerService } from './trainer.service';
+import { PokemonDetails } from '../models/pokemon-details';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
@@ -58,5 +59,10 @@ export class PokemonService {
         this.authService.updateUser(newUser);
       },
     });
+  }
+
+  getDetailedPokemon(pokemonId: string): Observable<PokemonDetails> {
+    const requestUrl: string = 'https://pokeapi.co/api/v2/pokemon/' + pokemonId;
+    return this.http.get<PokemonDetails>(requestUrl);
   }
 }

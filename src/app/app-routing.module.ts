@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { CataloguePage } from './pages/catalogue/catalogue.page';
 import { LoginPage } from './pages/login/login.page';
+import { PokemonDetailsPage } from './pages/pokemon-details/pokemon-details.page';
 import { TrainerPage } from './pages/trainer/trainer.page';
 
 const routes: Routes = [
@@ -18,6 +19,12 @@ const routes: Routes = [
     path: 'trainer',
     component: TrainerPage,
     title: 'Trainer - Pokémoon Trainer',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'details/:pokemonId',
+    component: PokemonDetailsPage,
+    title: 'Details - Pokémoon Trainer',
     canActivate: [AuthGuard],
   },
 ];

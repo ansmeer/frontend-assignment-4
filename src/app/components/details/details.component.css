@@ -1,0 +1,91 @@
+.grass{
+    background-color: rgb(123, 244, 123);
+    color: rgb(23, 200, 23);
+}
+.poison{
+    background-color: rgb(208, 16, 208);
+    color:rgb(107, 0, 107);
+}
+.normal{
+    background-color: grey;
+    color: white;
+}
+.fire{
+    background-color: darkred;
+    color: red;
+}
+.water{
+    background-color: blue;
+    color: darkblue;
+}
+.electric{
+    background-color: rgb(255, 255, 0);
+    color:rgb(201, 201, 32);
+}
+.ice{
+    background-color: aqua;
+    color:white;
+}
+.fighting{
+    background-color: brown;
+    color: black;
+}
+.ground{
+    background-color: burlywood;
+    color: brown;
+}
+.flying{
+    background-color: lightblue;
+    color:white;
+}
+.psychic{
+    background-color: lightcoral;
+    color: pink;
+}
+.bug{
+    background-color: greenyellow;
+    color: green
+}
+.rock{
+    background-color: burlywood;
+    color: brown;
+}
+.ghost{
+    background-color: darkblue;
+    color: grey;
+}
+.dragon{
+    background-color: rgb(119, 84, 223);
+    color: lightblue;
+}
+.dark{
+    background-color: rgb(60, 60, 60);
+    color:grey
+}
+.steel{
+    background-color: grey;
+    color: white;
+}
+.fairy{
+    background-color: pink;
+    color: white;
+}
+.type_box{
+    text-shadow: 1px 1px 1px black;
+    border-radius: 10px;
+    border-width: 3px;
+    border: 2px solid;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding: 7px
+}
+
+.details-container{
+    display:flex
+}
+td{
+    padding-right: 5px;
+}
+
+.pkmn-info{
+    padding-left: 15px;
+}

@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
+import { PokemonDetailsPage } from './pages/pokemon-details/pokemon-details.page';
+import { DetailsComponent } from './components/details/details.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { AuthService } from './services/auth.service';
     PokemonListComponent,
     PokemonListItemComponent,
     LoginFormComponent,
+    PokemonDetailsPage,
+    DetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [AuthService, TrainerService, PokemonService, AuthGuard],
