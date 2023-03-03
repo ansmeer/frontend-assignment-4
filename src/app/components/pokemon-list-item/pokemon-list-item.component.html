@@ -8,9 +8,11 @@
   />
 </div>
 <div class="title">
-  {{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }} (#{{
-    pokemon.id
-  }})
+  <a [routerLink]="['/details', pokemon.id]">
+    {{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }} (#{{
+      pokemon.id
+    }})</a
+  >
 </div>
 <div class="buttons">
   <button *ngIf="captured" (click)="signalReleasePokemon()" class="release">

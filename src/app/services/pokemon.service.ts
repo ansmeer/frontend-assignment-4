@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { Pokemon, PokemonList } from '../models/pokemon';
 import { AuthService } from './auth.service';
 import { TrainerService } from './trainer.service';
+import { PokemonDetails } from '../models/pokemon-details';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
@@ -65,5 +66,10 @@ export class PokemonService {
         console.log('Could not update user.', error.message);
       },
     });
+  }
+
+  getDetailedPokemon(pokemonId: string): Observable<PokemonDetails> {
+    const requestUrl = `${this._apiUrl}/${pokemonId}`;
+    return this.http.get<PokemonDetails>(requestUrl);
   }
 }

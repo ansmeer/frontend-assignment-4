@@ -1,0 +1,47 @@
+<h2 *ngIf="pokemon">
+  #{{ pokemon.id }}
+  {{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }}
+</h2>
+<table>
+  <tbody>
+    <tr>
+      <td
+        *ngFor="let type of pokemon?.types"
+        [ngClass]="[type.type.name, 'type_box']"
+      >
+        {{ type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1) }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="pokemon" ngClass="details-container">
+  <div ngClass="pkmn-image">
+    <img
+      [src]="pokemon.sprites.other['official-artwork'].front_default"
+      [alt]="pokemon.name"
+      class="avatar"
+    />
+  </div>
+  <div ngClass="pkmn-info">
+    <p>Height: {{ pokemon.height / 10 }} m</p>
+    <p>Weight: {{ pokemon.weight / 10 }} kg</p>
+    <h4>Abilities:</h4>
+    <ul>
+      <li *ngFor="let abil of pokemon.abilities">
+        {{
+          abil.ability.name.charAt(0).toUpperCase() + abil.ability.name.slice(1)
+        }}
+      </li>
+    </ul>
+    <h4>Stats:</h4>
+    <table>
+      <tbody>
+        <tr *ngFor="let stat of pokemon.stats">
+          <td>{{ stat.stat.name }}</td>
+          <td>{{ stat.base_stat }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<button (click)="handleBackClick()">Go back</button>
