@@ -1,6 +1,8 @@
+import { Params } from '@angular/router';
+
 export type Redirect = {
   route: string;
-  queryParams?: { queryParams: { page: number } };
+  queryParams?: { queryParams: Params };
 };
 
 export function parseRedirectTo(redirectInput?: string): Redirect {

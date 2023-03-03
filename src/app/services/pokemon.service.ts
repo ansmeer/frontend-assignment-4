@@ -5,10 +5,11 @@ import { Pokemon, PokemonList } from '../models/pokemon';
 import { AuthService } from './auth.service';
 import { TrainerService } from './trainer.service';
 import { PokemonDetails } from '../models/pokemon-details';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
-  private readonly apiUrl: string = 'https://pokeapi.co/api/v2/pokemon';
+  private readonly _apiUrl: string = environment.POKE_API_BASE_URL;
 
   constructor(
     private readonly http: HttpClient,
@@ -17,7 +18,7 @@ export class PokemonService {
   ) {}
 
   getPokemon(limit = 50, offset = 0): Observable<PokemonList> {
-    const requestUrl = `${this.apiUrl}?limit=${limit}&offset=${offset}`;
+    const requestUrl = `${this._apiUrl}?limit=${limit}&offset=${offset}`;
     return this.http.get<PokemonList>(requestUrl).pipe(
       map((data) => {
         const pokemonList: Pokemon[] = [];
@@ -42,6 +43,9 @@ export class PokemonService {
       next: (newUser) => {
         this.authService.updateUser(newUser);
       },
+      error: (error: HttpErrorResponse) => {
+        console.log('Could not update user.', error.message);
+      },
     });
   }
 
@@ -57,6 +61,9 @@ export class PokemonService {
     this.trainerService.updateTrainer(user.id, newPokemons).subscribe({
       next: (newUser) => {
         this.authService.updateUser(newUser);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log('Could not update user.', error.message);
       },
     });
   }

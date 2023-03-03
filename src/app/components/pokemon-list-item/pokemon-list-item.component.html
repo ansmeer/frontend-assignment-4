@@ -1,4 +1,4 @@
-<div>
+<div class="avatar">
   <img [src]="imageUrl" [alt]="pokemon.name" class="avatar" />
   <img
     *ngIf="captured"
@@ -7,14 +7,14 @@
     class="pokeball"
   />
 </div>
-<div>
+<div class="title">
   <a [routerLink]="['/details', pokemon.id]">
     {{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }} (#{{
       pokemon.id
     }})</a
   >
 </div>
-<div>
+<div class="buttons">
   <button *ngIf="captured" (click)="signalReleasePokemon()" class="release">
     Release
   </button>

@@ -1,9 +1,3 @@
-app-pokemon-list-item {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
 .avatar {
   height: 100px;
 }
@@ -17,11 +11,11 @@ div {
   padding: 10px;
 }
 
-div:nth-last-of-type(2) {
+.title {
   background-color: #d0d0d0;
 }
 
-div:last-of-type {
+.buttons {
   background-color: #d0d0d0;
   border-radius: 0 0 10px 10px;
 }

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Trainer } from '../models/trainer';
@@ -15,7 +16,7 @@ export class AuthService {
     private readonly router: Router
   ) {}
 
-  login(username: string, redirect: Redirect) {
+  login(username: string, redirect: Redirect): void {
     const { route, queryParams } = redirect;
     this.trainerService.getTrainer(username).subscribe({
       next: (trainers) => {
@@ -24,25 +25,31 @@ export class AuthService {
         } else {
           this._user = trainers[0];
           localStorage.setItem('username', username);
-          this.router.navigate([route], queryParams); // TODO can this be placed differently for separation of concerns?
+          this.router.navigate([route], queryParams);
         }
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log('Could not login user.', error.message);
       },
     });
   }
 
-  logout() {
+  logout(): void {
     this._user = null;
     localStorage.removeItem('username');
     this.router.navigate(['login']);
   }
 
-  register(username: string, redirect: Redirect) {
+  register(username: string, redirect: Redirect): void {
     const { route, queryParams } = redirect;
     this.trainerService.createTrainer(username).subscribe({
       next: (trainer) => {
         this._user = trainer;
         localStorage.setItem('username', username);
-        this.router.navigate([route], queryParams); // TODO can this be placed differently for separation of concerns?
+        this.router.navigate([route], queryParams);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log('Could not register user.', error.message);
       },
     });
   }

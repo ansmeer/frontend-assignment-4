@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PokemonList } from 'src/app/models/pokemon';
@@ -28,32 +29,32 @@ export class CatalogueComponent implements OnInit {
     this.updatePokemonList();
   }
 
-  updatePokemonList() {
+  updatePokemonList(): void {
     const offset = (this.page - 1) * this._perPage;
 
     this.pokemonService.getPokemon(this._perPage, offset).subscribe({
       next: (pokemons: PokemonList) => {
         this.pokemonList = pokemons;
       },
-      error: (error) => {
-        console.log('Yooo!', error.message); // TODO improve error handling.
+      error: (error: HttpErrorResponse) => {
+        console.log('Could not fetch pokemon list.', error.message);
       },
     });
   }
 
-  handleNextPageClick() {
+  handleNextPageClick(): void {
     this.page++;
     this.setPageAsUrlParam();
     this.updatePokemonList();
   }
 
-  handlePreviousPageClick() {
+  handlePreviousPageClick(): void {
     this.page--;
     this.setPageAsUrlParam();
     this.updatePokemonList();
   }
 
-  setPageAsUrlParam() {
+  setPageAsUrlParam(): void {
     const queryParams: Params = { page: this.page };
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
